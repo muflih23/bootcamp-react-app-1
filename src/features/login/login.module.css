@@ -34,3 +34,8 @@
     border-radius: 0.5rem;
     font-weight: 500;
 }
+
+.loginBtnWrapper {
+    display: flex;
+    width: 100px;
+}
