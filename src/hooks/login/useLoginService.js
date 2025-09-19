@@ -1,16 +1,30 @@
 import { useState } from "react";
+import { postLogin } from "../../service/auth";
+import { useNavigate } from "react-router-dom";
 
 function useLoginService() {
   const [username, setUsername] = useState(null);
   const [password, setPassword] = useState(null);
 
-  const handleLogin = () => {
-    let loginInfo = {
-      inputUsername: username,
-      inputPassword: password,
-    };
+  const navigate = useNavigate();
 
-    console.log(loginInfo);
+  const handleLogin = async() => {
+    let loginInfo = {
+      username: username,
+      password: password,
+    };
+    try {
+      const response = await postLogin(loginInfo);
+      if(response.id){
+        localStorage.setItem("userData", response);
+        localStorage.setItem("token", response.accessToken)
+        navigate('/home')
+      } else {
+        console.log("terjadi masalah pada saat auth")
+      }
+    } catch (error) {
+      console.log("error login : ", error)
+    }
   };
 
   return {
