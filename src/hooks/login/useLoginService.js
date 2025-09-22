@@ -18,7 +18,7 @@ function useLoginService() {
       if(response.id){
         localStorage.setItem("userData", response);
         localStorage.setItem("token", response.accessToken)
-        navigate('/home')
+        navigate('/')
       } else {
         console.log("terjadi masalah pada saat auth")
       }
