@@ -16,7 +16,7 @@ function useLoginService() {
     try {
       const response = await postLogin(loginInfo);
       if(response.id){
-        localStorage.setItem("userData", response);
+        localStorage.setItem("userData", JSON.stringify(response));
         localStorage.setItem("token", response.accessToken)
         navigate('/')
       } else {
