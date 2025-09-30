@@ -58,6 +58,13 @@ h1 {
     font-weight: 500;
 }
 
+.paginationWrapper {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
 @media(min-width: 767px) {
     .content {
         height: 100vh;

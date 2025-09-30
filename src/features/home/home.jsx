@@ -2,6 +2,7 @@ import React from 'react'
 import style from './home.module.css'
 import useProducts from '../../hooks/products/useProducts';
 import ProductCard from '../../components/molecule/product-card/productCard';
+import Pagination from 'components/molecule/pagination/Pagination';
 
 function Home() {
 
@@ -9,6 +10,8 @@ function Home() {
 
   const {
     productList,
+    paginationInfo,
+    handlePageChange
   } = useProducts();
 
   return (
@@ -31,6 +34,14 @@ function Home() {
             />
           ))
         }
+      </div>
+      <div className={style.paginationWrapper}>
+        <Pagination 
+          totalPages={paginationInfo.totalPage}
+          currentPage={paginationInfo.currentPage}
+          onPageChange={(page) => {handlePageChange(page)}}
+          visiblePages={5}
+        />
       </div>
     </div>
   )
